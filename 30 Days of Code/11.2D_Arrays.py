@@ -86,18 +86,14 @@ if __name__ == '__main__':
     for _ in range(6):
         arr.append(list(map(int, input().rstrip().split())))
  
-    maxValue = 0
-    output = []
-
+    maxValue = float('-inf')
+  
     for (indexArray, valueArray) in enumerate(arr):
         for (index, value) in enumerate(valueArray):
             if indexArray < len(arr) -2 and index < len(valueArray) - 2:
-                hourglass = list((value, valueArray[index+1],valueArray[index+2], arr[indexArray+1][index + 1], arr[indexArray+2][index], arr[indexArray+2][index + 1], arr[indexArray+2][index + 2]))
+                hourGlass = value + valueArray[index+1] + valueArray[index+2] + arr[indexArray+1][index + 1] + arr[indexArray+2][index] + arr[indexArray+2][index + 1] + arr[indexArray+2][index + 2]
                 
-                output.append(sum(hourglass))
-            else:
-                continue
-
-    maxValue = max(output)
+                if hourGlass > maxValue:
+                    maxValue = hourGlass
     print(maxValue)
 
